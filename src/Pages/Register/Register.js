@@ -49,7 +49,7 @@ const Register = () => {
                     </button>
                 </div>
                 <p className="text-xs text-center sm:px-6 dark:text-gray-400">Don't have an account?
-                    <Link className='text-orange-clr font-bold' to='/register/login'> Login</Link>
+                    <Link className='text-orange-clr font-bold' to='/login'> Login</Link>
                 </p>
             </div>
         </div >

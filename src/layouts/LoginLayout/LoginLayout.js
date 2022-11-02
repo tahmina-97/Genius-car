@@ -1,6 +1,7 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import HeaderPro from '../../../Pages/Shared/HeaderPro/HeaderPro';
+import HeaderPro from '../../Pages/Shared/HeaderPro/HeaderPro';
+
 
 const LoginLayout = () => {
     return (

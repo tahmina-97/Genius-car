@@ -6,11 +6,11 @@ import logo from '../../../assets/logo.svg'
 const HeaderPro = () => {
     const menuItems = <>
         <li>
-            <Link to='/'>Home</Link>
+            {/* <Link to='/'>Home</Link> */}
             <Link to='/order'>Order</Link>
             <Link to='/order-review'>Order Review</Link>
             <Link to='/inventory'>Manage Inventory</Link>
-            <Link to='/register/login'> Login</Link>
+            <Link to='/login'> Login</Link>
         </li>
     </>
     return (
