@@ -1,6 +1,8 @@
+import { async } from "@firebase/util";
 import { createBrowserRouter } from "react-router-dom";
 import LoginLayout from "../layouts/LoginLayout/LoginLayout";
 import Main from "../layouts/Main/Main";
+import Checkout from "../Pages/Checkout/Checkout";
 import ErrorElement from "../Pages/ErrorElement/ErrorElement";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
@@ -13,6 +15,11 @@ export const router = createBrowserRouter([
         element: <Main></Main>, children: [
             {
                 path: '/', element: <Home></Home>
+            },
+            {
+                path: '/checkout/:id',
+                loader: async ({ params }) => fetch(`http://localhost:5000/services/${params.id}`),
+                element: <Checkout></Checkout>
             }
         ]
     },

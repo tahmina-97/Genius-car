@@ -7,9 +7,10 @@ const LoginLayout = () => {
     return (
         <div>
             <HeaderPro></HeaderPro>
-            <Outlet></Outlet>
-
-        </div >
+            <div className='max-w-6xl mx-auto'>
+                <Outlet></Outlet>
+            </div>
+        </div>
     );
 };
 

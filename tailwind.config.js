@@ -11,6 +11,7 @@ module.exports = {
         'orange-clr': '#FF3811',
         'orange-deep': '#dc3311',
         'gray-text': '#737373',
+        'gray-bg': '#F3F3F3'
       },
       fontFamily: {
         'inter': ['Inter', 'sans-serif'],

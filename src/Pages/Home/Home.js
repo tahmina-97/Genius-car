@@ -5,11 +5,10 @@ import Services from './Services/Services';
 
 const Home = () => {
     return (
-        <div className='max-w-6xl mx-auto'>
+        <div >
             <Banner></Banner>
             <About></About>
             <Services></Services>
-
         </div>
     );
 };

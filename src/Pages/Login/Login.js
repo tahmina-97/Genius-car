@@ -47,7 +47,7 @@ const Login = () => {
 
     return (
         <div className='flex flex-col-reverse md:flex md:flex-row justify-center gap-10'>
-            <div className='mx-10'>
+            <div className='mx-10 md:ml-0'>
                 <img src={img} alt="" />
             </div>
             <div className="w-full border-2 border-light-text ml-4  max-w-md p-8 space-y-3 rounded-xl dark:bg-gray-900 dark:text-gray-100">
@@ -66,8 +66,9 @@ const Login = () => {
 
                         </div>
                     </div>
-                    <button className="block w-full p-3 text-center btn btn-square bg-orange-clr border-0 
+                    <button className="block w-full p-3 text-center btn bg-orange-clr border-0 
                     hover:bg-orange-600 rounded-sm dark:text-gray-900 dark:bg-violet-400">Sign in</button>
+
                     <p className='text-center text-red-600 font-semibold'><small>{error}</small> </p>
                 </form>
                 <div class="relative my-4">

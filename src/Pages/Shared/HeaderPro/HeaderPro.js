@@ -28,7 +28,7 @@ const HeaderPro = () => {
                     <img src={logo} alt="" />
                 </Link>
             </div>
-            <div className="navbar-center hidden lg:flex">
+            <div className="navbar-end hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">
                     {menuItems}
                 </ul>
