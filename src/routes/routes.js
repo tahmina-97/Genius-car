@@ -2,6 +2,7 @@ import { async } from "@firebase/util";
 import { createBrowserRouter } from "react-router-dom";
 import LoginLayout from "../layouts/LoginLayout/LoginLayout";
 import Main from "../layouts/Main/Main";
+import Orders from "../Orders/Orders";
 import Checkout from "../Pages/Checkout/Checkout";
 import ErrorElement from "../Pages/ErrorElement/ErrorElement";
 import Home from "../Pages/Home/Home";
@@ -20,6 +21,10 @@ export const router = createBrowserRouter([
                 path: '/checkout/:id',
                 loader: async ({ params }) => fetch(`http://localhost:5000/services/${params.id}`),
                 element: <Checkout></Checkout>
+            },
+            {
+                path: '/orders',
+                element: <Orders></Orders>
             }
         ]
     },
