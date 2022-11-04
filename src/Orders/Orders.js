@@ -8,7 +8,7 @@ const Orders = () => {
     const { user, logOut } = useContext(AuthContext);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/orders?email=${user?.email}`, {
+        fetch(`https://genius-car-server-lovat.vercel.app/orders?email=${user?.email}`, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('token')}`
             }
@@ -28,9 +28,12 @@ const Orders = () => {
         const proceed = window.confirm(`Are you sure to remove from cart?`);
         console.log(proceed);
         if (proceed) {
-            fetch(`http://localhost:5000/orders/${id}`,
+            fetch(`https://genius-car-server-lovat.vercel.app/orders/${id}`,
                 {
                     method: 'DELETE',
+                    headers: {
+                        authorization: `Bearer ${localStorage.getItem('token')}`
+                    }
                 }
             )
                 .then(res => res.json())
@@ -53,10 +56,11 @@ const Orders = () => {
     const handleStatusUpdate = id => {
         const proceed = window.confirm("Are you sure, you want to approve the order?")
         if (proceed) {
-            fetch(`http://localhost:5000/orders/${id}`, {
+            fetch(`https://genius-car-server-lovat.vercel.app/orders/${id}`, {
                 method: 'PATCH',
                 headers: {
-                    'content-type': 'application/json'
+                    'content-type': 'application/json',
+                    authorization: `Bearer ${localStorage.getItem('token')}`
                 },
                 body: JSON.stringify({ status: 'Approved' })
             })
