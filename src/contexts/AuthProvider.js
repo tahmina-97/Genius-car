@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, updateProfile } from 'firebase/auth';
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
 import app from '../firebase/firebase.config';
 
 export const AuthContext = createContext();
@@ -33,6 +33,13 @@ const AuthProvider = ({ children }) => {
 
     }
 
+    //logout 
+    const logOut = () => {
+        setLoading(true);
+        // localStorage.removeItem('token');
+        return signOut(auth);
+    }
+
 
     //monitoring the user
     useEffect(() => {
@@ -48,7 +55,7 @@ const AuthProvider = ({ children }) => {
     }, []);
 
 
-    const authInfo = { user, loading, createUser, updateUserProfile, signIn, providerLogin };
+    const authInfo = { user, loading, createUser, updateUserProfile, signIn, providerLogin, logOut };
     return (
         <AuthContext.Provider value={authInfo}>
             {children}

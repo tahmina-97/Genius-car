@@ -1,4 +1,3 @@
-import { async } from "@firebase/util";
 import { createBrowserRouter } from "react-router-dom";
 import LoginLayout from "../layouts/LoginLayout/LoginLayout";
 import Main from "../layouts/Main/Main";
@@ -8,6 +7,7 @@ import ErrorElement from "../Pages/ErrorElement/ErrorElement";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
+import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
     {
@@ -19,12 +19,12 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/checkout/:id',
-                loader: async ({ params }) => fetch(`http://localhost:5000/services/${params.id}`),
-                element: <Checkout></Checkout>
+                loader: ({ params }) => fetch(`http://localhost:5000/services/${params.id}`),
+                element: <PrivateRoute><Checkout></Checkout></PrivateRoute>
             },
             {
                 path: '/orders',
-                element: <Orders></Orders>
+                element: <PrivateRoute><Orders></Orders></PrivateRoute>
             }
         ]
     },

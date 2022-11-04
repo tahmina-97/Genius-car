@@ -1,17 +1,21 @@
-import React, { useContext } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import React, { useContext, useEffect } from 'react';
+import { useLoaderData, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 
 const Checkout = () => {
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
     const service = useLoaderData().data;
     const { _id, title, price } = service;
     const { user, loading } = useContext(AuthContext);
+    const navigate = useNavigate();
     if (loading) {
         return (
             <div className='text-center'>
                 <div
                     className="mx-auto spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full text-orange-clr" role="status">
-                    <span class="hidden">Loading...</span>
+                    <span className="hidden">Loading...</span>
                 </div>
             </div>
         );
@@ -58,6 +62,8 @@ const Checkout = () => {
                 }
             })
             .catch(err => console.error(err))
+
+        navigate('/orders');
     }
 
     return (
@@ -75,7 +81,7 @@ const Checkout = () => {
                             <input id="" type="number" name='phone' placeholder="Your Phone" className="text-sm w-full h-14 p-5 rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 dark:text-gray-900" required />
                         </div>
                         <div className="col-span-full sm:col-span-3">
-                            <input id="" type="email" name='email' placeholder="Your Email" className="text-sm w-full h-14 p-5 rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 dark:text-gray-900" value={user?.email} required />
+                            <input id="" type="email" name='email' placeholder="Your Email" className="text-sm w-full h-14 p-5 rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 dark:text-gray-900" defaultValue={user?.email} required />
                         </div>
 
 

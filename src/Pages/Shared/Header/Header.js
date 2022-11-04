@@ -1,9 +1,21 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { BsHandbag, BsSearch } from "react-icons/bs";
 import logo from '../../../assets/logo.svg'
+import { AuthContext } from '../../../contexts/AuthProvider';
 
 const Header = () => {
+    const { user, logOut } = useContext(AuthContext);
+    const handleLogOut = () => {
+        logOut()
+            .then(() => {
+
+            })
+            .catch(error => {
+                const errorMessage = error.message;
+                console.error('error', error);
+            })
+    }
     const menuItems = <>
         <li>
             <Link to='/'>Home</Link>
@@ -11,9 +23,22 @@ const Header = () => {
             <Link to='/services'>Services</Link>
             <Link to='/blog'>Blog</Link>
             <Link to='/content'>Content</Link>
-            <Link to='/login'>Login</Link>
+            {
+                user?.email ?
+                    <>
+                        <Link to='/orders'>orders</Link>
+                        <button onClick={handleLogOut} className='btn btn-error text-white hover:bg-red-500'>Sign Out</button>
+
+                    </>
+                    :
+                    <Link to='/login'>Login</Link>
+            }
+
+
         </li>
     </>
+
+
     return (
         <div className="navbar bg-base-100 max-w-6xl mx-auto my-3">
             <div className="navbar-start">
@@ -39,7 +64,7 @@ const Header = () => {
                     <BsHandbag></BsHandbag>
                     <BsSearch></BsSearch>
                     <Link>
-                        <button className="btn btn-outline text-orange-clr hover:bg-orange-clr hover:border-0">Appointment</button>
+                        <button className="btn btn-outline text-orange-clr hover:bg-orange-clr hover:border-transparent">Appointment</button>
                     </Link>
                 </div>
 

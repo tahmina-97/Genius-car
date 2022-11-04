@@ -1,16 +1,38 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { BsHandbag, BsSearch } from "react-icons/bs";
 import logo from '../../../assets/logo.svg'
+import { AuthContext } from '../../../contexts/AuthProvider';
 
 const HeaderPro = () => {
+    const { user, logOut } = useContext(AuthContext);
+    const handleLogOut = () => {
+        logOut()
+            .then(() => {
+
+            })
+            .catch(error => {
+                const errorMessage = error.message;
+                console.error('error', error);
+            })
+    }
     const menuItems = <>
         <li>
             {/* <Link to='/'>Home</Link> */}
             <Link to='/orders'>Order</Link>
             <Link to='/order-review'>Order Review</Link>
             <Link to='/inventory'>Manage Inventory</Link>
-            <Link to='/login'> Login</Link>
+            {
+                user?.email ?
+                    <>
+                        <Link to='/orders'>orders</Link>
+                        <button onClick={handleLogOut} className='btn btn-error text-white hover:bg-red-500'>Sign Out</button>
+
+                    </>
+                    :
+                    <Link to='/login'>Login</Link>
+            }
+
         </li>
     </>
     return (
