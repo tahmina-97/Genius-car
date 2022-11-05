@@ -19,7 +19,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/checkout/:id',
-                loader: ({ params }) => fetch(`https://genius-car-server-lovat.vercel.app/services/${params.id}`),
+                loader: ({ params }) => fetch(`https://genius-car-server-4.vercel.app/services/${params.id}`),
                 element: <PrivateRoute><Checkout></Checkout></PrivateRoute>
             },
             {

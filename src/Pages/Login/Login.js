@@ -21,7 +21,7 @@ const Login = () => {
                 const currentUser = {
                     email: user.email
                 }
-                fetch('https://genius-car-server-lovat.vercel.app/jwt', {
+                fetch('https://genius-car-server-4.vercel.app/jwt', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -59,7 +59,7 @@ const Login = () => {
                 }
                 console.log(user);
                 //get jwt token
-                fetch('https://genius-car-server-lovat.vercel.app/jwt', {
+                fetch('https://genius-car-server-4.vercel.app/jwt', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
